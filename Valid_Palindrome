@@ -1,0 +1,25 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        l = 0
+        r = len(s) - 1
+
+       
+        while l < r: # simply less than.
+            while l < r and not self.isAlpha(s[r]):
+                r -= 1
+            while l < r and not self.isAlpha(s[l]):
+                l += 1
+            if s[l].lower() != s[r].lower():
+                return False
+            l += 1
+            r -= 1
+            
+        return True 
+        
+
+    def isAlpha(self, letter):
+        return ((ord("A") <= ord(letter) <= ord("Z")) or 
+                (ord("0") <= ord(letter) <= ord("9")) or
+                (ord("a") <= ord(letter) <= ord("z")))
+
+    # helper function is key
