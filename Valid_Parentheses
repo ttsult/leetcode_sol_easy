@@ -1,0 +1,16 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        closeToOpen = {")":"(","}":"{","]":"["} # close to Open dict is key.
+        stack = []
+
+        
+        for c in s:
+            if c not in closeToOpen: # if elem is not in the dictionary -> its an open
+                stack.append(c)
+            else: # if it is a close bracket 
+                if stack and stack[-1] == closeToOpen[c]: # if the last elem matches the current 
+                    stack.pop()
+                else:
+                    return False 
+        
+        return True if not stack else False
